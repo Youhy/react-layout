@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { Header } from './components/Header';
@@ -19,8 +19,9 @@ const App: React.FC = () => {
         <section className="main-container">
           <Router>
             <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/layout" component={Layout} />
+              <Route exact path="/" render={() => (<Redirect to="/react-layout" />)} />    
+              <Route path="/react-layout" exact component={Home} />
+              <Route path="/react-layout/layout" component={Layout} />
             </Switch>
           </Router>
         </section>
